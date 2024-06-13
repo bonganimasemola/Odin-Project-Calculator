@@ -35,3 +35,29 @@ function operate(operator, a, b) {
             return null;
     }
 }
+
+let displayValue = '0';
+
+function updateDisplay() {
+    const display = document.getElementById('display');
+    display.innerText = displayValue;
+}
+
+document.querySelectorAll('.button').forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.getAttribute('data-value');
+
+        if (!isNaN(value)){
+            if (displayValue === '0'){
+                displayValue = value;
+            } else {
+                displayValue += value;
+            }
+        } else if (value === 'C'){
+            displayValue = '0';
+            firstNumber = null;
+            secondNumber = null;
+            operator = null;
+        }
+    })
+})
